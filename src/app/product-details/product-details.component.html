@@ -1,0 +1,12 @@
+<div class="container d-flex ">
+    <div class="img-section"><img src="{{ProductDetail?.image}}" class="img-fluid rounded-start"
+            alt="Shopping cart items"></div>
+    <div class="product-info ">
+        <div class="title">{{ProductDetail?.title}}
+        <div class="rating-section"><ngb-rating class="rating" [max]="5" [(rate)]="rating" [readonly]="false"></ngb-rating> <div class="rating-count">{{ProductDetail?.rating?.count}} <span>rating</span> </div></div>
+        </div>
+        <div class="price">{{ProductDetail?.price | currency}}</div>
+        <div class="description">{{ProductDetail?.description}}</div>
+        <button class="btn btn-primary" (click)="AddProductToCart()">Add to cart </button>
+    </div>
+</div>

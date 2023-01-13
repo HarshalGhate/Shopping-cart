@@ -1,0 +1,69 @@
+<!-- <div class="container text-center">
+    <div class="card mb-3" *ngFor="let item of cartList" style="max-width: 100%;">
+        <div class="row g-0">
+            <div class="col-md-4 img-d">
+                <img src="{{item.image}}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.title}}</h5>
+                    <h4 class="card-subtitle mb-2 ">{{item.price|currency}}</h4>
+                    <p class="card-text">{{item.description}}</p>
+                    <p class="card-text"><small class="text-muted">{{item.category}}</small></p>
+                </div>
+            </div>
+            <div class="col-md-4 center-btn">
+               <div class="col-md-2">
+                <button class="btn-quantity">+</button>
+                <input type="text">
+                <button class="btn-quantity">-</button>
+               </div>
+                <button class="btn btn-danger">Delete</button>
+                
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<ng-container *ngIf="cartList.length>0">
+    <table class="table table-bordered text-center container">
+        <thead>
+            <tr>
+                <th scope="col">Sr.no</th>
+                <th scope="col">Image</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total Price</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cartList;index as i">
+                <td class="align-middle" scope="row">{{i+1}}</td>
+                <td class="align-middle"><img src="{{item.image}}" class="img-fluid rounded-start" alt="Shopping cart items"></td>
+                <td class="align-middle">{{item.price | currency}}</td>
+                <td class="align-middle"> <button class="btn btn-light btn-circle btn-xl" (click)="substractQuantity(item)">-</button> {{item.quantity}} <button class="btn btn-light btn-circle btn-xl" (click)="addQuantity(item)">+</button></td>
+                <td class="align-middle">{{item.totalPrice | currency}}</td>
+                <td class="align-middle">
+                    <!-- <button class="btn btn-warning me-4" (click)="EditItem(item.id)">Edit</button> -->
+                    <!-- <button class="btn btn-info me-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="EditItem(item)" >Edit</button> -->
+                    <!-- <button class="btn btn-danger " (click)="removeItem(item.id)">Delete</button> -->
+                    <mat-icon routerLink="cart"  (click)="removeItem(item.id)" matBadgeColor="denger" style="color: red;" class="material-icons align-middle">delete_forever</mat-icon>
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</ng-container>
+
+<ng-container *ngIf="cartList.length==0">
+    <div class="text-center">
+        <img src="../../assets/emty-cart-img.webp" class="rounded empty-cart-img" alt="...">
+    </div>
+</ng-container>
+
+<div class="text-center">
+    <button class="btn btn-danger me-4" (click)="removeAll()">Empty Cart</button>
+    <button class="btn btn-primary" routerLink="/product">Shop Now</button>
+</div>
