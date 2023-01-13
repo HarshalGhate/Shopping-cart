@@ -51,6 +51,11 @@ img {
     /* align-self: center; */
     margin-right: 20px;
 }
+
+.rating-count{
+    font-size: 15px;
+    color: #6574c4;
+}
 .description{
  font-size: 16px;
 }

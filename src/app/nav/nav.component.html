@@ -1,15 +1,49 @@
-<p>
+<!-- <p>
     <mat-toolbar color="primary">
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>Amazon</span>
-      <!-- <input type="text"> -->
+      <div class="header">
+        <div>Amazon</div>
+        <div>
+          <input class="" type="text">
+        </div>
+      </div>
+     
       <span class="example-spacer"></span>
-      <!-- <mat-icon matBadge="15" matBadgeColor="warn">home</mat-icon> -->
+      <mat-icon matBadge="15" matBadgeColor="warn">home</mat-icon>
      
       <mat-icon routerLink="cart" matBadge="{{totalCartItem}}" matBadgeColor="warn" class="material-icons">shopping_cart</mat-icon>
       
     </mat-toolbar>
-  </p>
+  </p> -->
+
+
+  <!-- nav -->
+  <nav class="navbar navbar-expand-lg navbar-dark ">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Amazon</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          
+         
+        </ul>
+        <!-- mx-auto -->
+        <div class="d-flex ">
+          <input class="form-control me-2" type="search" (keyup)="searchProduct($event)"  placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success"  >Search</button>
+        </div>
+        <mat-icon routerLink="cart" matBadge="{{totalCartItem}}" matBadgeColor="warn" class="material-icons">shopping_cart</mat-icon>
+      </div>
+    </div>
+  </nav>
   

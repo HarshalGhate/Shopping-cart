@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartDataService } from '../Services/cart-data.service';
+import { SearchProductService } from '../Services/search-product.service';
 
 @Component({
   selector: 'app-nav',
@@ -9,7 +10,7 @@ import { CartDataService } from '../Services/cart-data.service';
 export class NavComponent implements OnInit {
 
   totalCartItem= 0
-  constructor(private cartService:CartDataService) { }
+  constructor(private cartService:CartDataService , private _Search:SearchProductService) { }
   
   ngOnInit(): void {
     this.cartService.getCartCount()
@@ -17,6 +18,10 @@ export class NavComponent implements OnInit {
       console.warn("-------d---",d);
       this.totalCartItem=d
     })
+  }
+
+  searchProduct(e:any){
+    this._Search.sendToSearchProduct(e.target.value);
   }
   
 
