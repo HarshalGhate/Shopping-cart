@@ -12,6 +12,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .carousel-control-next-icon,.carousel-control-prev-icon{
     background-color: black;
     border-radius: 5px;
+    /* position: relative; */
+    /* top: -25%; */
+}
+.carousel-indicators{
+    display: none !important;
 }
 
 button:active {

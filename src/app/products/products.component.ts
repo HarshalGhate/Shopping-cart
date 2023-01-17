@@ -12,60 +12,54 @@ import { SearchProductService } from '../Services/search-product.service';
 export class ProductsComponent implements OnInit {
 
   constructor(private _Products: ProductsDataService, private _Cart: CartDataService, private _Search: SearchProductService) { }
-  productList: undefined | productInfo[];
+  productList:productInfo[]=[];
   ngOnInit(): void {
 
     // get product list
-    this.getPopularProducts();
+    // this.getPopularProducts();
+    this.getCarouselImg();
     this.getProducts();
   }
 
+  public searchItem=''
+  public copy:any;
   getProducts() {
     this._Products.getProductList().subscribe(Response => {
       this.productList = Response;
-      let searchItem = ''
-      if (searchItem == '') {
-        console.warn(this.productList);
-        //  this.productList=prod;
-      }
-
+      
+      // search string
       this._Search.SearchProductSubject.subscribe(d => {
-        searchItem = d
-        this.productList=[]
-
-        this.productList?.filter((prod:productInfo) => {
-          console.warn();
-          if(prod.title.includes(searchItem)){
-            this.productList?.push(prod)
-            console.warn("------prod=",this.productList);
-          }
-        })
-
-
+        this.searchItem = d
+        // this.PopularProducts=[]
+        this.Img=[]
       })
       // console.warn(this.productList);
     })
   }
 
 
-  PopularProducts: productInfo[] = []
-  getPopularProducts() {
-    this._Products.getPopularProduct().subscribe(Response => {
-      this.PopularProducts = Response;
-      console.warn(this.PopularProducts);
-
-    })
-  }
+  // PopularProducts: productInfo[] = []
+  // getPopularProducts() {
+  //   this._Products.getPopularProduct().subscribe(Response => {
+  //     this.PopularProducts = Response;
+  //     // console.warn(this.PopularProducts);
+  //   })
+  // }
+  
 
   AddcartList: productInfo[] = []
   AddProductToCart(data: productInfo) {
     data.quantity = 1
     data.totalPrice = data.price
+    console.warn("data------",data);
+    
     this._Cart.postProductToCart(data).subscribe(Response => {
       this._Cart.getCartCount()
     })
   }
-
-
+public Img:any[]=[]
+getCarouselImg(){
+  this.Img=["assets/carousel/amazon1.jpg","assets/carousel/amazon2.jpg","assets/carousel/amazon3.jpg"]
+}
 
 }

@@ -12,13 +12,19 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { FilterPipe } from './Pipe/filter.pipe';
+import { TotalPricePipe } from './Pipe/total-price.pipe';
+import { TotalQuantityPipe } from './Pipe/total-quantity.pipe';
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     ProductsComponent,
     CartComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    FilterPipe,
+    TotalPricePipe,
+    TotalQuantityPipe
   ],
   imports: [
     BrowserModule,

@@ -25,8 +25,8 @@
     </div>
 </div> -->
 
-<ng-container *ngIf="cartList.length>0">
-    <table class="table table-bordered text-center container">
+<ng-container  *ngIf="cartList.length>0">
+    <table class="table mt-3 table-bordered text-center container">
         <thead>
             <tr>
                 <th scope="col">Sr.no</th>
@@ -40,21 +40,29 @@
         <tbody>
             <tr *ngFor="let item of cartList;index as i">
                 <td class="align-middle" scope="row">{{i+1}}</td>
-                <td class="align-middle"><img src="{{item.image}}" class="img-fluid rounded-start" alt="Shopping cart items"></td>
-                <td class="align-middle">{{item.price | currency}}</td>
-                <td class="align-middle"> <button class="btn btn-light btn-circle btn-xl" (click)="substractQuantity(item)">-</button> {{item.quantity}} <button class="btn btn-light btn-circle btn-xl" (click)="addQuantity(item)">+</button></td>
-                <td class="align-middle">{{item.totalPrice | currency}}</td>
+                <td class="align-middle"><img src="{{item.image}}" class="img-fluid rounded-start"
+                        alt="Shopping cart items"></td>
+                <td class="align-middle">{{item.price | currency }}</td>
+                <td class="align-middle quantity-in"> <button class="btn btn-light btn-circle btn-xl"
+                        (click)="substractQuantity(item)">-</button> {{item.quantity}} <button
+                        class="btn btn-light btn-circle btn-xl" (click)="addQuantity(item)">+</button></td>
+                <td class="align-middle"><b>{{item.totalPrice | currency }}</b></td>
                 <td class="align-middle">
                     <!-- <button class="btn btn-warning me-4" (click)="EditItem(item.id)">Edit</button> -->
                     <!-- <button class="btn btn-info me-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="EditItem(item)" >Edit</button> -->
                     <!-- <button class="btn btn-danger " (click)="removeItem(item.id)">Delete</button> -->
-                    <mat-icon routerLink="cart"  (click)="removeItem(item.id)" matBadgeColor="denger" style="color: red;" class="material-icons align-middle">delete_forever</mat-icon>
+                    <mat-icon routerLink="cart" (click)="removeItem(item.id)" matBadgeColor="denger" style="color: red;"
+                        class="material-icons align-middle">delete_forever</mat-icon>
                 </td>
             </tr>
 
 
         </tbody>
+
     </table>
+    <h2 class="text-center total-product-price"> Subtotal ({{cartList | totalQuantity}} items): <b> {{cartList |
+            totalPrice | currency}}</b></h2>
+
 </ng-container>
 
 <ng-container *ngIf="cartList.length==0">

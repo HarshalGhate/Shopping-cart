@@ -1,4 +1,4 @@
-<div class="container d-flex ">
+<!-- <div class="container d-flex ">
     <div class="img-section"><img src="{{ProductDetail?.image}}" class="img-fluid rounded-start"
             alt="Shopping cart items"></div>
     <div class="product-info ">
@@ -9,4 +9,26 @@
         <div class="description">{{ProductDetail?.description}}</div>
         <button class="btn btn-primary" (click)="AddProductToCart()">Add to cart </button>
     </div>
+</div> -->
+
+
+<div class="card mt-5 mb-3 container" style="max-width: 700px;">
+  <div class="row g-0">
+    <div class="col-md-4 align-middle">
+      <img src="{{ProductDetail?.image}}" class="img-fluid rounded-start" alt="Product details imgage">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body product-info">
+        <h5 class="card-title title">{{ProductDetail?.title}}</h5>
+        <div class="rating-section">
+          <ngb-rating class="rating" [max]="5" [(rate)]="rating" [readonly]="false"></ngb-rating>
+          <div class="rating-count">{{ProductDetail?.rating?.count}} <span>rating</span> </div>
+        </div>
+
+        <div class="price">{{ProductDetail?.price | currency}}</div>
+        <div class="description">{{ProductDetail?.description}}</div>
+        <button class="btn btn-primary" (click)="AddProductToCart()">Add to cart </button>
+      </div>
+    </div>
+  </div>
 </div>

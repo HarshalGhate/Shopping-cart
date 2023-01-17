@@ -1,26 +1,27 @@
-<ngb-carousel *ngIf="PopularProducts">
-    <ng-template *ngFor="let item of PopularProducts" ngbSlide>
-      <div class="picsum-img-wrapper">
-        <a routerLink="/details/{{item.id}}"><img class="product-header-img" src="{{item.image}}"
-            alt="Random first slide">
-        </a>
-      </div>
-      <div class="carousel-caption">
-        <h3>{{item.title}}</h3>
-        <p>{{item.description}}</p>
-      </div>
+<ngb-carousel *ngIf="Img.length>0">
+    <ng-template *ngFor="let item of Img" ngbSlide>
+        <div class="picsum-img-wrapper">
+            <a routerLink="/details/{{item.id}}"><img class="product-header-img" src="{{item}}"
+                    alt="Random first slide">
+            </a>
+        </div>
+        <!-- <div class="carousel-caption">
+            <h3>{{item.title}}</h3>
+            <p>{{item.description}}</p>
+        </div> -->
     </ng-template>
-  </ngb-carousel>
-  
+</ngb-carousel>
 
-<div class="container text-center">
-    <div class="row row-cols-1 row-cols-md-3 mb-2 text-center row-gap--20">
+
+<div class="container text-center" [ngClass]="(Img.length==0)?'copy':''">
+    <div class="row row-cols-1 row-cols-md-4 mb-2 text-center row-gap--20">
         <!-- <div class="col" *ngFor="let item of productList"> -->
-            <div class="d-flex justify-content-evenly " *ngFor="let item of productList">
+        <div class="d-flex justify-content-evenly " *ngFor="let item of productList | filter:searchItem">
 
             <div class="card" style="width: 18rem;">
                 <div class="img-section">
-                    <a routerLink="/details/{{item.id}}"><img src="{{item.image}}" class="card-img-top" alt="Product images"></a>
+                    <a routerLink="/details/{{item.id}}"><img src="{{item.image}}" class="card-img-top"
+                            alt="Product images"></a>
                 </div>
 
                 <div class="card-body">
@@ -28,11 +29,12 @@
                     <h4 class="card-subtitle mb-2 ">{{item.price|currency}}</h4>
                     <!-- <h4 class="card-subtitle mb-2 "  [ngClass]="(item.price<50)?'sucess':(item.price>50 && item.price<100)?'denger':(item.price>100)?'b':''">{{item.price|currency}}</h4> -->
                     <!-- <p class="card-text">{{item.description}}</p> -->
-                   
+
                 </div>
                 <div class="button-section">
-                    <button class="btn btn-primary" (click)="AddProductToCart(item)" >Add Cart</button>
-                    <button class="btn btn-primary" routerLink="/details/{{item.id}}" >View Details</button>
+                    <button class="btn btn-primary" (click)="AddProductToCart(item)">Add Cart</button>
+                    <!-- <button mat-raised-button  (click)="AddProductToCart(item)" color="primary">Add Cart</button> -->
+                    <button class="btn btn-primary" routerLink="/details/{{item.id}}">View Details</button>
                 </div>
 
             </div>

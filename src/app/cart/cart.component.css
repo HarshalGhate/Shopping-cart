@@ -1,3 +1,6 @@
+.full{
+    max-width: 90%;
+}
 img {
     width: 150px;
     height: 150px;
@@ -13,6 +16,12 @@ img {
 .img-d {
     /* position: relative;
     transform: translate(6%, 19%); */
+}
+
+.quantity-in{
+    display: flex;
+    align-items: center;
+    height: 10rem;
 }
 
 .center-btn{
@@ -44,4 +53,11 @@ img {
 
 .material-icons{
     cursor: pointer;
+}
+
+.total-product-price{
+    border-top: 1px solid #dee2e6;
+    margin-top: 5px;
+    width: 70%;
+    margin: auto;
 }
